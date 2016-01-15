@@ -51,7 +51,8 @@ class Graph(object):
             sys.exit(3)
 
         try:
-            os.mkdir(self.output_dir)
+			if not os.path.exists(self.output_dir):
+				os.makedirs(self.output_dir)
         except (IOError, OSError) as e:
             print "%s: '%s'" % (e.strerror, e.filename)
             sys.exit(3)
